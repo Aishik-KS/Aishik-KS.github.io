@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" fill="none" role="img" aria-label="Portrait placeholder">
+  <rect width="300" height="400" fill="#111114"/>
+  <g stroke="#26262c" stroke-width="1" opacity="0.6">
+    <path d="M0 110 L300 34"/>
+    <path d="M0 300 L300 224"/>
+    <path d="M70 400 L300 258"/>
+    <path d="M0 210 L190 400"/>
+  </g>
+  <g stroke="#ff333f" stroke-width="2" opacity="0.85" stroke-linejoin="round" fill="none">
+    <path d="M150 92 l40 23 v46 l-40 23 -40 -23 v-46 z"/>
+    <path d="M88 306 c0 -46 27 -78 62 -78 s62 32 62 78"/>
+  </g>
+  <g fill="#ff333f" opacity="0.9">
+    <rect x="146" y="150" width="8" height="8" transform="rotate(45 150 154)"/>
+  </g>
+  <text x="150" y="356" text-anchor="middle" font-family="monospace" font-size="12" letter-spacing="3" fill="#8b8b95">AISHIK SARKAR</text>
+  <text x="150" y="376" text-anchor="middle" font-family="monospace" font-size="9" letter-spacing="2" fill="#6c6c76">// add photo → profile.svg</text>
+</svg>

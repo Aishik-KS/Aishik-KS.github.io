@@ -1,0 +1,288 @@
+/* ============================================================
+   case.css — project case-study + listing pages
+   Loaded in addition to styles.css. Uses the same tokens.
+   ============================================================ */
+
+.case-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* Clear the fixed side-nav rail on desktop so centered content never sits under it. */
+@media (min-width: 681px) {
+  #case { padding-left: var(--rail-w); }
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+  transition: gap var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.back-link:hover { gap: 0.9rem; color: var(--red-bright); }
+
+/* Eyebrow */
+.case-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin: 0 0 0.6rem;
+}
+.case-eyebrow .idx { color: var(--red); }
+
+/* ---------- Hero ---------- */
+.case-top {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-4);
+}
+.case-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 1.5rem + 3.4vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  margin: 0.3rem 0 1rem;
+}
+.case-lead {
+  font-size: clamp(1.1rem, 1rem + 0.6vw, 1.4rem);
+  color: var(--text-muted);
+  max-width: 56ch;
+  line-height: 1.5;
+}
+.case-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: var(--space-3); }
+
+/* Poster banner */
+.case-poster {
+  margin: var(--space-4) auto 0;
+  border: 1px solid var(--hairline);
+  overflow: hidden;
+  aspect-ratio: 16 / 7;
+  background: var(--bg);
+}
+.case-poster img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Meta strip */
+.case-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border-block: 1px solid var(--hairline);
+  margin-top: var(--space-4);
+}
+.case-meta > div { background: var(--bg); padding: 1rem 1.1rem; }
+.case-meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin-bottom: 0.35rem;
+}
+.case-meta dd { color: var(--text); font-size: 0.9rem; margin: 0; }
+.case-meta dd.accent { color: var(--red-bright); }
+
+/* ---------- Stats ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  margin-block: var(--space-4);
+}
+.stat { background: var(--bg); padding: clamp(1.1rem, 2.5vw, 1.6rem); }
+.stat b {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  letter-spacing: -0.02em;
+  color: var(--red-bright);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat span {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+/* ---------- Stack band ---------- */
+.stack-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  padding-block: 1.4rem;
+  border-block: 1px solid var(--hairline);
+  margin-block: var(--space-4);
+}
+.stack-band h2 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  margin-right: 0.5rem;
+}
+
+/* ---------- Write-up ---------- */
+.case-doc { padding-block: var(--space-3); counter-reset: sec; }
+.case-doc section { margin-bottom: clamp(2.25rem, 4vw, 3.25rem); }
+.case-doc h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.case-doc h2::before {
+  counter-increment: sec;
+  content: "0" counter(sec);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--red-bright);
+  letter-spacing: 0.1em;
+}
+.case-doc p { color: var(--text-muted); max-width: 68ch; margin-bottom: 1rem; line-height: 1.65; }
+.case-doc ul { display: grid; gap: 0.7rem; margin: 0.5rem 0 0; padding: 0; list-style: none; }
+.case-doc ul li {
+  display: flex;
+  gap: 0.75rem;
+  color: var(--text);
+  max-width: 66ch;
+  line-height: 1.6;
+}
+.case-doc ul li::before {
+  content: "";
+  width: 7px; height: 7px;
+  margin-top: 0.55rem;
+  flex: none;
+  background: var(--red);
+  transform: rotate(45deg);
+}
+.callout {
+  border-left: 2px solid var(--red);
+  background: var(--surface);
+  padding: 1.1rem 1.3rem;
+  margin: 1.4rem 0;
+  color: var(--text);
+  max-width: 66ch;
+}
+
+/* ---------- Prev / next ---------- */
+.case-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: var(--space-5);
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.case-nav a { color: var(--text); transition: color var(--dur) var(--ease); }
+.case-nav a:hover { color: var(--red-bright); }
+.case-nav .lbl { display: block; color: var(--text-faint); margin-bottom: 0.35rem; font-size: 0.66rem; }
+.case-nav .disabled { opacity: 0.3; pointer-events: none; }
+
+@media (max-width: 760px) {
+  .case-meta { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Problem comparison ---------- */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin: 1.3rem 0;
+}
+.compare__card {
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 1.1rem 1.2rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, var(--bevel) 100%, 0 calc(100% - var(--bevel)));
+}
+.compare__card h3 {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red-bright);
+  margin: 0 0 0.55rem;
+}
+.compare__card p { margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.55; max-width: none; }
+
+/* ---------- At a glance (highlights) ---------- */
+.glance {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  margin-top: 0.7rem;
+}
+.glance__item { background: var(--bg); padding: 1rem 1.15rem; }
+.glance__item b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 0.97rem; margin-bottom: 0.28rem; }
+.glance__item span { display: block; color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; }
+
+/* ---------- Feature cards ---------- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: 0.8rem;
+}
+.feature {
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 1.35rem 1.4rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.feature:hover { border-color: var(--red-line); transform: translateY(-3px); }
+.feature__icon {
+  display: grid; place-items: center;
+  width: 40px; height: 40px;
+  margin-bottom: 0.9rem;
+  border: 1px solid var(--red-line);
+  background: var(--red-tint);
+  color: var(--red-bright);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+.feature__icon svg { width: 20px; height: 20px; }
+.feature h3 { font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 0.5rem; }
+.feature > p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.55; margin: 0 0 0.85rem; max-width: none; }
+.feature ul { display: grid; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+.feature li { display: flex; gap: 0.6rem; color: var(--text); font-size: 0.87rem; line-height: 1.5; max-width: none; }
+.feature li::before {
+  content: ""; width: 6px; height: 6px; margin-top: 0.45rem; flex: none;
+  background: var(--red); transform: rotate(45deg);
+}
+
+@media (max-width: 760px) {
+  .compare, .feature-grid { grid-template-columns: 1fr; }
+}
