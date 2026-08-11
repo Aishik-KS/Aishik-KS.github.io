@@ -1,0 +1,561 @@
+/* ============================================================
+   case-study.css — redesigned project case-study system.
+   Loaded by projects/reunite.html AND projects/fact-checker.html,
+   in addition to styles.css + case.css. Generic `ru-` prefixed
+   components (hero, stats, flow, features, stack table, roadmap)
+   plus a `fc-` Telegram-mock used on the Fact Checker hero. The
+   older case.css components are left untouched. Uses site tokens.
+   ============================================================ */
+
+.ru-wrap {
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+.ru-section { padding-block: clamp(2.75rem, 6vw, 4.5rem); }
+
+/* Shared section header: mono kicker + display title. */
+.ru-shead { margin-bottom: var(--space-4); }
+.ru-shead__idx {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.ru-shead__idx b { color: var(--red-bright); font-weight: 500; }
+.ru-shead__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 1.25rem + 1.7vw, 2.4rem);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin: 0.5rem 0 0;
+}
+.ru-shead__sub {
+  color: var(--text-muted);
+  max-width: 62ch;
+  margin: 0.75rem 0 0;
+  line-height: 1.6;
+}
+
+/* ===========================================================
+   HERO
+   =========================================================== */
+.ru-hero { padding-top: var(--space-5); padding-bottom: var(--space-4); }
+.ru-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(1.5rem, 4vw, 3.25rem);
+  align-items: center;
+}
+.ru-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin: 0 0 1rem;
+}
+.ru-eyebrow .idx { color: var(--red); }
+
+/* Award ribbon */
+.ru-award {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.75rem;
+  border: 1px solid var(--red-line);
+  background: var(--red-tint);
+  color: var(--red-bright);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+.ru-award svg { width: 16px; height: 16px; flex: none; }
+.ru-award b { color: var(--text); font-weight: 500; }
+
+.ru-hero__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 1.6rem + 4.6vw, 4.6rem);
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  margin: 1.1rem 0 0;
+}
+.ru-hero__tagline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin: 0.7rem 0 0;
+  max-width: 24ch;
+}
+.ru-hero__lead {
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 46ch;
+  margin: 1rem 0 0;
+}
+.ru-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: var(--space-3); }
+.ru-cta .btn svg { width: 16px; height: 16px; }
+
+/* Hero meta list */
+.ru-hero__meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: 0.55rem 2.4rem;
+  margin: var(--space-3) 0 0;
+  padding: var(--space-3) 0 0;
+  border-top: 1px solid var(--hairline);
+  list-style: none;
+}
+.ru-hero__meta li {
+  font-size: 0.92rem;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.ru-hero__meta li span {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ===========================================================
+   VIDEO (click-to-load YouTube facade)
+   =========================================================== */
+.ru-hero__media { min-width: 0; }
+.ru-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--hairline);
+  background: #0f0f12;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, var(--bevel) 100%, 0 calc(100% - var(--bevel)));
+}
+.ru-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+.ru-video__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--dur) var(--ease);
+}
+.ru-video__link:hover { color: var(--red-bright); }
+
+/* ===========================================================
+   STATS band
+   =========================================================== */
+.ru-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+.ru-stat { background: var(--bg); padding: clamp(1.1rem, 2.5vw, 1.7rem); }
+.ru-stat b {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem);
+  letter-spacing: -0.02em;
+  color: var(--red-bright);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.ru-stat span {
+  display: block;
+  margin-top: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ===========================================================
+   PROBLEM (two-card compare, redesigned)
+   =========================================================== */
+.ru-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+.ru-xcard {
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 1.3rem 1.4rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.ru-xcard h3 {
+  display: flex; align-items: center; gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--red-bright);
+  margin: 0 0 0.6rem;
+}
+.ru-xcard h3 svg { width: 16px; height: 16px; }
+.ru-xcard p { margin: 0; color: var(--text-muted); font-size: 0.93rem; line-height: 1.6; }
+.ru-gap {
+  border-left: 2px solid var(--red);
+  background: var(--surface);
+  padding: 1.15rem 1.35rem;
+  margin-top: var(--space-3);
+  color: var(--text);
+  line-height: 1.6;
+}
+.ru-gap strong { color: var(--red-bright); font-weight: 600; }
+
+/* ===========================================================
+   ARCHITECTURE / HOW IT WORKS — pipeline flow
+   =========================================================== */
+.ru-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  margin-top: var(--space-3);
+}
+.ru-stage {
+  position: relative;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 1.25rem 1.25rem 1.35rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+/* Right-pointing connector between stages (desktop). */
+.ru-stage:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -1.35rem;
+  width: 0.9rem; height: 0.9rem;
+  border-top: 2px solid var(--red-line);
+  border-right: 2px solid var(--red-line);
+  transform: translateY(-50%) rotate(45deg);
+}
+.ru-stage__num {
+  display: inline-grid;
+  place-items: center;
+  width: 30px; height: 30px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--red-bright);
+  border: 1px solid var(--red-line);
+  background: var(--red-tint);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+  margin-bottom: 0.85rem;
+}
+.ru-stage__title {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+}
+.ru-stage__desc { color: var(--text-muted); font-size: 0.86rem; line-height: 1.5; margin: 0 0 0.85rem; }
+.ru-stage__tech { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.ru-chip {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--hairline);
+  background: var(--bg);
+}
+
+/* ===========================================================
+   FEATURE GRID (redesigned cards)
+   =========================================================== */
+.ru-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+.ru-feature {
+  position: relative;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 1.4rem 1.45rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.ru-feature:hover { border-color: var(--red-line); transform: translateY(-3px); }
+.ru-feature__head { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.9rem; }
+.ru-feature__icon {
+  display: grid; place-items: center;
+  width: 42px; height: 42px; flex: none;
+  border: 1px solid var(--red-line);
+  background: var(--red-tint);
+  color: var(--red-bright);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 9px 100%, 0 calc(100% - 9px));
+}
+.ru-feature__icon svg { width: 21px; height: 21px; }
+.ru-feature h3 { font-family: var(--font-display); font-size: 1.14rem; margin: 0; line-height: 1.15; }
+.ru-feature__lead { color: var(--text-muted); font-size: 0.9rem; line-height: 1.55; margin: 0 0 0.85rem; }
+.ru-feature ul { display: grid; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+.ru-feature li { display: flex; gap: 0.6rem; color: var(--text); font-size: 0.87rem; line-height: 1.5; }
+.ru-feature li::before {
+  content: ""; width: 6px; height: 6px; margin-top: 0.45rem; flex: none;
+  background: var(--red); transform: rotate(45deg);
+}
+
+/* ===========================================================
+   TECH STACK table
+   =========================================================== */
+.ru-stack {
+  border: 1px solid var(--hairline);
+  margin-top: var(--space-3);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  overflow: hidden;
+}
+.ru-stack__row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.95rem 1.3rem;
+  border-bottom: 1px solid var(--hairline);
+}
+.ru-stack__row:last-child { border-bottom: 0; }
+.ru-stack__row:hover { background: var(--surface); }
+.ru-stack__k {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.ru-stack__k svg { width: 16px; height: 16px; color: var(--red-bright); flex: none; }
+.ru-stack__v { color: var(--text); font-size: 0.95rem; }
+.ru-stack__v b { font-weight: 600; }
+.ru-stack__v em { color: var(--text-muted); font-style: normal; }
+
+/* ===========================================================
+   REFLECTION (outcome + what I'd change, two columns)
+   =========================================================== */
+.ru-reflect {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+.ru-note {
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 1.4rem 1.5rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.ru-note h3 {
+  display: flex; align-items: center; gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red-bright);
+  margin: 0 0 0.75rem;
+}
+.ru-note h3 svg { width: 16px; height: 16px; }
+.ru-note p { margin: 0; color: var(--text-muted); line-height: 1.65; }
+
+/* ===========================================================
+   ROADMAP
+   =========================================================== */
+.ru-road {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  margin-top: var(--space-3);
+}
+.ru-road__item { background: var(--bg); padding: 1.1rem 1.2rem; }
+.ru-road__item b {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  margin-bottom: 0.3rem;
+}
+.ru-road__item b svg { width: 15px; height: 15px; color: var(--red-bright); flex: none; }
+.ru-road__item span { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; }
+
+/* ===========================================================
+   FACT CHECKER — Telegram-mock hero visual (fc-)
+   =========================================================== */
+.fc-chat {
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, var(--bevel) 100%, 0 calc(100% - var(--bevel)));
+}
+.fc-chat__head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--hairline);
+  background: var(--card);
+}
+.fc-chat__ava {
+  display: grid; place-items: center;
+  width: 30px; height: 30px; flex: none;
+  color: #0a0a0b;
+  background: var(--red);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+}
+.fc-chat__ava svg { width: 17px; height: 17px; }
+.fc-chat__name { font-family: var(--font-display); font-weight: 600; font-size: 0.9rem; }
+.fc-chat__meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.fc-chat__tag {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border: 1px solid var(--hairline);
+  padding: 0.2rem 0.4rem;
+}
+.fc-chat__body { display: grid; gap: 0.7rem; padding: 1rem 0.9rem; }
+.fc-msg {
+  max-width: 88%;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--hairline);
+}
+.fc-msg--user {
+  justify-self: end;
+  color: #0a0a0b;
+  background: var(--red);
+  border-color: var(--red);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 100%);
+  font-weight: 500;
+  word-break: break-word;
+}
+.fc-msg--bot {
+  justify-self: start;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+}
+.fc-msg--bot p { margin: 0.55rem 0 0; color: var(--text-muted); font-size: 0.78rem; line-height: 1.5; max-width: none; }
+.fc-verdict { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+.fc-verdict__label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.fc-verdict__score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--red-bright);
+  font-variant-numeric: tabular-nums;
+}
+.fc-verdict__score i { font-size: 0.8rem; font-style: normal; color: var(--text-faint); font-weight: 500; }
+.fc-verdict__tag {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--red-bright);
+}
+.fc-meter {
+  height: 6px;
+  margin-top: 0.55rem;
+  background: var(--bg);
+  border: 1px solid var(--hairline);
+  overflow: hidden;
+}
+.fc-meter span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--red-deep), var(--red));
+}
+.fc-caption {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.fc-caption svg { width: 14px; height: 14px; flex: none; }
+
+/* Telegram-mock reused as a centred example figure under the pipeline. */
+.fc-example { max-width: 440px; margin: var(--space-4) auto 0; }
+.fc-example figcaption { display: flex; justify-content: center; }
+
+/* ===========================================================
+   RESPONSIVE
+   =========================================================== */
+@media (max-width: 900px) {
+  .ru-hero__grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .ru-hero__media { order: -1; }
+  .ru-flow { grid-template-columns: repeat(2, 1fr); gap: 2.25rem 1.5rem; }
+  /* Downward connector on the last card of each row would be wrong;
+     switch all connectors to point down between stacked pairs. */
+  .ru-stage:not(:last-child)::after {
+    top: auto; right: auto;
+    bottom: -1.7rem; left: 50%;
+    transform: translateX(-50%) rotate(135deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .ru-stats { grid-template-columns: repeat(2, 1fr); }
+  .ru-compare,
+  .ru-features,
+  .ru-reflect,
+  .ru-road { grid-template-columns: 1fr; }
+  .ru-stack__row { grid-template-columns: 1fr; gap: 0.35rem; padding: 0.9rem 1.1rem; }
+}
+
+@media (max-width: 560px) {
+  .ru-flow { grid-template-columns: 1fr; gap: 2rem; }
+  .ru-hero__meta { grid-template-columns: 1fr 1fr; }
+}
+
+/* Reduced motion: kill hover lifts + play-button scale. */
+@media (prefers-reduced-motion: reduce) {
+  .ru-feature:hover,
+  .ru-video:hover .ru-video__play { transform: none; }
+}

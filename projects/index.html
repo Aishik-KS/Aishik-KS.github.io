@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Content-Security-Policy (defense-in-depth baseline — see index.html for the full rationale
+       comment; meta delivery ignores frame-ancestors/report-uri/sandbox). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://aishik-bot.ask14112001.workers.dev https://formspree.io; frame-src https://www.youtube-nocookie.com; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'" />
+  <title>Projects · Aishik Kumar Sarkar</title>
+  <meta name="author" content="Aishik Kumar Sarkar" />
+  <meta name="description" content="All projects by Aishik Sarkar — hackathon builds and case studies in AI and full-stack engineering." />
+  <meta name="theme-color" content="#0a0a0b" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='4'%20fill='%230a0a0b'/%3E%3Ctext%20x='16'%20y='23'%20font-family='monospace'%20font-size='19'%20font-weight='700'%20text-anchor='middle'%20fill='%23ff333f'%3EA%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="../css/styles.css?v=14" />
+  <link rel="stylesheet" href="../css/case.css?v=2" />
+</head>
+
+<body class="pagebg-shards">
+  <a class="skip-link" href="#all">Skip to projects</a>
+
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-shape bg-shape--ring"></div>
+    <div class="bg-shape bg-shape--diamond"></div>
+    <div class="bg-shape bg-shape--hex"></div>
+    <div class="bg-shape bg-shape--tri"></div>
+    <div class="bg-shape bg-shape--plus bg-shape--plus-a"></div>
+    <div class="bg-shape bg-shape--plus bg-shape--plus-b"></div>
+    <div class="bg-grain"></div>
+  </div>
+
+  <nav class="sidenav" aria-label="Section navigation">
+    <ul class="sidenav__list">
+      <li><a class="sidenav__link" href="../index.html#hero" aria-label="Home"><span class="sidenav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h5v-6h4v6h5V9"/></svg></span><span class="sidenav__label">Home</span></a></li>
+      <li><a class="sidenav__link" href="../index.html#experience" aria-label="About"><span class="sidenav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="8" r="4"/></svg></span><span class="sidenav__label">About</span></a></li>
+      <li><a class="sidenav__link is-active" href="../index.html#projects" aria-label="Projects"><span class="sidenav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 16 9 5 9-5"/></svg></span><span class="sidenav__label">Projects</span></a></li>
+      <li><a class="sidenav__link" href="../index.html#skills" aria-label="Skills"><span class="sidenav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m13 6-2 12"/></svg></span><span class="sidenav__label">Skills</span></a></li>
+      <li><a class="sidenav__link" href="../index.html#certificates" aria-label="Certificates"><span class="sidenav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg></span><span class="sidenav__label">Certificates</span></a></li>
+      <li><a class="sidenav__link" href="../index.html#contact" aria-label="Contact"><span class="sidenav__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="sidenav__label">Contact</span></a></li>
+    </ul>
+  </nav>
+
+  <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+    <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
+  </button>
+  <div class="mobile-drawer" id="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation menu" hidden>
+    <nav class="mobile-drawer__nav" aria-label="Section navigation (mobile)">
+      <a class="mobile-drawer__link" href="../index.html#hero"><span class="mobile-drawer__idx">01</span> Home</a>
+      <a class="mobile-drawer__link" href="../index.html#experience"><span class="mobile-drawer__idx">02</span> About</a>
+      <a class="mobile-drawer__link" href="../index.html#projects"><span class="mobile-drawer__idx">03</span> Projects</a>
+      <a class="mobile-drawer__link" href="../index.html#skills"><span class="mobile-drawer__idx">04</span> Skills</a>
+      <a class="mobile-drawer__link" href="../index.html#certificates"><span class="mobile-drawer__idx">05</span> Certificates</a>
+      <a class="mobile-drawer__link" href="../index.html#contact"><span class="mobile-drawer__idx">06</span> Contact</a>
+    </nav>
+  </div>
+
+  <main id="all">
+    <section class="section">
+      <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Back home</a>
+      <p class="case-eyebrow reveal"><span class="idx">*</span> / All projects</p>
+      <h1 class="section__title reveal" style="margin-bottom:0.9rem;">Everything I&rsquo;ve built.</h1>
+      <p class="section__intro reveal" style="margin-bottom:var(--space-5);">
+        Hackathon builds and side projects, with a case study behind each. More on
+        <a href="https://github.com/Aishik-KS" target="_blank" rel="noopener noreferrer" style="color:var(--red-bright); border-bottom:1px solid var(--red);">GitHub ↗</a>.
+      </p>
+
+      <div class="project-grid">
+        <article class="pcard reveal">
+          <a class="pcard__media" href="reunite.html" aria-label="Open ReUnite case study">
+            <img src="../assets/img/poster-reunite.jpg" alt="Preview of the ReUnite AI lost-and-found platform" loading="lazy" />
+            <span class="pcard__award"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg> Most Useful</span>
+          </a>
+          <div class="pcard__body">
+            <span class="pcard__idx">01 · NTU SummerBuild 2025</span>
+            <h2 class="pcard__title">ReUnite — AI lost &amp; found</h2>
+            <p class="pcard__desc">
+              An AI lost-and-found platform that won &ldquo;Most Useful&rdquo; out of 50+ teams.
+              Image-to-text matching lifted accuracy by 60%.
+            </p>
+            <ul class="tags">
+              <li class="tag">ReactJS</li><li class="tag">NodeJS</li><li class="tag">Firebase</li><li class="tag">Gemini AI</li>
+            </ul>
+            <a class="pcard__link" href="reunite.html">View case study <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="pcard reveal">
+          <a class="pcard__media" href="fact-checker.html" aria-label="Open Fact Checker case study">
+            <img src="../assets/img/poster-fact-checker.jpg" alt="Preview of the Fact Checker fake-news detector" loading="lazy" />
+          </a>
+          <div class="pcard__body">
+            <span class="pcard__idx">02 · NTU TechFest 2025</span>
+            <h2 class="pcard__title">Fact Checker — fake-news detector</h2>
+            <p class="pcard__desc">
+              A Python Telegram bot that flags fake news with Gemini-powered credibility checks —
+              20% better detection and 30% faster responses.
+            </p>
+            <ul class="tags">
+              <li class="tag">Python</li><li class="tag">Gemini API</li><li class="tag">Telegram</li><li class="tag">Prompt Eng</li>
+            </ul>
+            <a class="pcard__link" href="fact-checker.html">View case study <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__name">Aishik Sarkar</p>
+    <a class="footer__top" href="#" data-scroll-top>
+      Back to top
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+    </a>
+  </footer>
+
+  <div class="chat" id="chat">
+    <button class="chat__fab" type="button" data-chat-toggle aria-label="Open Aishik's Robot" aria-expanded="false" aria-controls="chat-panel">
+      <svg class="chat__fab-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2.5"/><path d="M12 8V4.5"/><circle cx="12" cy="3" r="1.1"/><path d="M9.5 13.5h.01M14.5 13.5h.01"/><path d="M2 13.5v3M22 13.5v3"/></svg>
+      <svg class="chat__fab-close" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      <span class="chat__fab-ping" aria-hidden="true"></span>
+    </button>
+    <div class="chat__panel" id="chat-panel" role="dialog" aria-label="Aishik's Robot — ask about Aishik" hidden>
+      <header class="chat__header">
+        <span class="chat__avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2.5"/><path d="M12 8V4.5"/><circle cx="12" cy="3" r="1.1"/><path d="M9.5 13.5h.01M14.5 13.5h.01"/><path d="M2 13.5v3M22 13.5v3"/></svg></span>
+        <span class="chat__id"><span class="chat__name">Aishik&rsquo;s Robot</span><span class="chat__status"><span class="chat__status-dot" aria-hidden="true"></span> online · ask me anything</span></span>
+        <button class="chat__close" type="button" data-chat-close aria-label="Close chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </header>
+      <div class="chat__log" data-chat-log role="log" aria-live="polite"></div>
+      <div class="chat__suggest" data-chat-suggest aria-label="Suggested questions"></div>
+      <form class="chat__form" data-chat-form>
+        <input class="chat__input" data-chat-input type="text" autocomplete="off" placeholder="Ask about my work, projects, skills…" aria-label="Type your question to Aishik's Robot" />
+        <button class="chat__send" type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg></button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js?v=2"></script>
+  <script src="../js/chatbot.js?v=7"></script>
+</body>
+</html>
