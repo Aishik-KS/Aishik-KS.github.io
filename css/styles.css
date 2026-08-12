@@ -990,6 +990,16 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 }
 .tag:hover { color: var(--red-bright); border-color: var(--red-line); }
 
+/* #projects: title row + "view all" + cards, laid out with named grid
+   placement (not flex/nesting) specifically so "view all" can reposition
+   below the cards on mobile — see the mobile query — without duplicating
+   the link in the markup. Desktop: unchanged from before (title left,
+   link right, same row). */
+#projects { display: grid; grid-template-columns: 1fr auto; column-gap: 1rem; }
+#projects .section-head { grid-column: 1; grid-row: 1; }
+#projects > .view-all { grid-column: 2; grid-row: 1; align-self: end; margin-bottom: var(--space-3); }
+#projects .project-grid { grid-column: 1 / -1; grid-row: 2; }
+
 .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
 .pcard {
   display: flex;
@@ -1150,13 +1160,19 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 
 .contact__resume { font-size: 0.9rem; padding: 0.85rem 1.4rem; }
 
-/* Contact: form (left) + direct links (right) */
+/* Contact: direct info/links (left) + form (right). Visual order only —
+   .cform stays first in the markup (keeps the existing tab/reading order for
+   keyboard and screen-reader users); `order` just flips which side each
+   renders on for sighted mouse/trackpad users on wide viewports. Reset back
+   to source order in the mobile query, where it stacks to one column anyway. */
 .contact__cols {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: var(--space-5);
   align-items: start;
 }
+.contact__cols .cform { order: 2; }
+.contact__cols .contact__direct { order: 1; }
 .contact__direct-label {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -1510,6 +1526,10 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
   .skills { grid-template-columns: 1fr; }
   .contact__grid { grid-template-columns: 1fr; }
   .contact__cols { grid-template-columns: 1fr; gap: var(--space-4); }
+  /* Stacked single-column here — restore source order (form, then direct
+     links) instead of the desktop-only visual swap above. */
+  .contact__cols .cform { order: 0; }
+  .contact__cols .contact__direct { order: 0; }
   .cform__submit { align-self: stretch; text-align: center; justify-content: center; }
 }
 
@@ -1529,6 +1549,13 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
   .section__intro { margin-left: auto; margin-right: auto; text-align: center; }
   .seg { margin-left: auto; margin-right: auto; }
   .section-head { flex-direction: column; align-items: center; text-align: center; }
+  /* Projects: "view all" moves below the cards instead of sitting under the
+     title (see the #projects grid-area rules) — single source of markup,
+     just a different grid slot per breakpoint. */
+  #projects { grid-template-columns: 1fr; }
+  #projects .section-head { grid-column: 1; grid-row: 1; }
+  #projects .project-grid { grid-column: 1; grid-row: 2; }
+  #projects > .view-all { grid-column: 1; grid-row: 3; justify-self: center; align-self: auto; margin: var(--space-3) 0 0; }
   .tags { justify-content: center; }
   .pcard { text-align: center; }
   .pcard__link { align-self: center; }
@@ -1547,9 +1574,9 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
      instead: logo on top, then org/date/role, then the bullet list. The spine is
      tied to the logo's left-column position so it no longer applies once stacked. */
   .timeline::before { display: none; }
-  .timeline__item { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 0.7rem; }
+  .timeline__item { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 0.4rem; }
   .timeline__logo { width: 56px; height: 56px; font-size: 0.78rem; }
-  .timeline__head { flex-direction: column; align-items: center; gap: 0.35rem; }
+  .timeline__head { flex-direction: column; align-items: center; gap: 0.2rem; }
   .timeline__points { text-align: left; max-width: 34ch; margin: 0.7rem auto 0; }
 
   .hero,

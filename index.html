@@ -38,7 +38,7 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
 
   <!-- ===== Styles ===== -->
-  <link rel="stylesheet" href="css/styles.css?v=14" />
+  <link rel="stylesheet" href="css/styles.css?v=15" />
 </head>
 
 <body>
@@ -402,8 +402,12 @@
           <span class="section__idx" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 16 9 5 9-5"/></svg></span>
           <h2 class="section__title">Projects</h2>
         </div>
-        <a class="view-all" href="projects/index.html">View all projects <span aria-hidden="true">→</span></a>
       </div>
+
+      <!-- Sibling of .section-head/.project-grid (not nested) so it can sit
+           inline with the title on desktop but reposition below the cards on
+           mobile via #projects grid areas — no duplicated markup needed. -->
+      <a class="view-all" href="projects/index.html">View all projects <span aria-hidden="true">→</span></a>
 
       <div class="project-grid">
         <!-- ReUnite -->
@@ -413,7 +417,7 @@
             <span class="pcard__award"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg> Most Useful</span>
           </a>
           <div class="pcard__body">
-            <span class="pcard__idx">01 · NTU SummerBuild 2025</span>
+            <span class="pcard__idx">NTU SummerBuild 2025</span>
             <h3 class="pcard__title">ReUnite — AI lost &amp; found</h3>
             <p class="pcard__desc">
               An AI lost-and-found platform that won &ldquo;Most Useful&rdquo; out of 50+ teams.
@@ -432,7 +436,7 @@
             <img src="assets/img/poster-fact-checker.jpg" alt="Preview of the Fact Checker fake-news detector" loading="lazy" />
           </a>
           <div class="pcard__body">
-            <span class="pcard__idx">02 · NTU TechFest 2025</span>
+            <span class="pcard__idx">NTU TechFest 2025</span>
             <h3 class="pcard__title">Fact Checker — fake-news detector</h3>
             <p class="pcard__desc">
               A Python Telegram bot that flags fake news with Gemini-powered credibility checks —
@@ -640,7 +644,7 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
   <script src="js/chatbot.js?v=7"></script>
 </body>
 </html>

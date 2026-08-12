@@ -150,6 +150,20 @@
       return document.getElementById(t.getAttribute("aria-controls"));
     });
 
+    // The three tab buttons aren't equal width (grid 1fr tracks size to each
+    // button's own content when the container itself is width:max-content —
+    // "Leadership" is wider than "Work"), so the old CSS assumption of exact
+    // thirds (width:33% + translateX(index*100%)) left the red indicator
+    // mismatched against the actual button it's meant to highlight. Position
+    // it from real geometry instead — always exact, on any content/width.
+    function positionIndicator(index) {
+      if (!ind || !tabs[index]) return;
+      var segRect = seg.getBoundingClientRect();
+      var btnRect = tabs[index].getBoundingClientRect();
+      ind.style.width = btnRect.width + "px";
+      ind.style.transform = "translateX(" + (btnRect.left - segRect.left) + "px)";
+    }
+
     function activate(index, focus) {
       tabs.forEach(function (tab, i) {
         var selected = i === index;
@@ -158,14 +172,19 @@
         tab.tabIndex = selected ? 0 : -1;
         if (panels[i]) panels[i].hidden = !selected;
       });
-      if (ind) ind.style.transform = "translateX(" + index * 100 + "%)";
+      positionIndicator(index);
       if (focus && tabs[index]) tabs[index].focus();
     }
 
+    var activeIndex = 0;
     seg.addEventListener("click", function (e) {
       var tab = e.target.closest(".seg__btn");
-      if (tab) activate(tabs.indexOf(tab), false);
+      if (tab) { activeIndex = tabs.indexOf(tab); activate(activeIndex, false); }
     });
+
+    // Button widths can change on resize/rotate (different wrapping, font
+    // metrics) — keep the indicator glued to the active button.
+    window.addEventListener("resize", function () { positionIndicator(activeIndex); });
 
     // Arrow-key navigation between tabs (WAI-ARIA pattern).
     seg.addEventListener("keydown", function (e) {
@@ -176,7 +195,7 @@
       else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (current - 1 + tabs.length) % tabs.length;
       else if (e.key === "Home") next = 0;
       else if (e.key === "End") next = tabs.length - 1;
-      if (next !== null) { e.preventDefault(); activate(next, true); }
+      if (next !== null) { e.preventDefault(); activeIndex = next; activate(next, true); }
     });
 
     activate(0, false); // set initial indicator position
