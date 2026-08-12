@@ -1588,7 +1588,13 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
   .footer { padding-left: var(--space-3); padding-right: var(--space-3); }
   .hero { padding-top: var(--space-5); padding-bottom: var(--space-5); }
   .section { padding-top: var(--space-6); }
-  .hero__scroll { bottom: var(--space-3); }
+  /* .hero__scroll is position:absolute + bottom-anchored (no `top` set), so a
+     literal margin-top would have no visual effect — the box's bottom edge is
+     pinned by `bottom`, so top margin doesn't push the visible content anywhere.
+     To actually add clearance above it, pull the anchor closer to the viewport
+     edge instead (bottom var(--space-3) → var(--space-1)), which grows the gap
+     between the hero content above it and the cue itself. */
+  .hero__scroll { bottom: var(--space-1); }
 
   /* Hide the desktop rail */
   .sidenav { display: none; }
